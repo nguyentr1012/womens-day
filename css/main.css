@@ -348,7 +348,7 @@ body {
   }
 }
 .bloom {
-  animation: bloomB 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: bloomB 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* giảm 0.5s → 0.3s để hoa nở nhanh hơn */
 }
 
 /* lắc lư sau mỗi lần tưới */
@@ -380,7 +380,7 @@ body {
 }
 .wobble {
   transform-origin: 50% 95%;
-  animation: wobble 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: wobble 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; /* giảm 0.65s → 0.4s */
 }
 
 /* đung đưa liên tục khi full bloom */
@@ -424,7 +424,7 @@ body {
   }
 }
 .happy {
-  animation: happyBounce 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: happyBounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); /* giảm 0.7s → 0.45s */
 }
 
 @keyframes starP {

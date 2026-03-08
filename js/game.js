@@ -188,7 +188,7 @@
       setTimeout(function () {
         svgEl.classList.remove("bloom", "happy");
         svgEl.classList.add("sway");
-      }, 750);
+      }, 450);
 
       // star ring vfx
       var ring = document.createElement("div");
@@ -202,7 +202,7 @@
       window.spawnP(r.left + r.width / 2, r.top + 18, true);
       updateBar();
       if (done === N) {
-        setTimeout(winGame, 700);
+        setTimeout(winGame, 1000);
         return;
       }
       setHint("🌸 " + done + "/" + N + " hoa nở rồi! Tiếp tục nào~");

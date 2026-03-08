@@ -40,7 +40,9 @@
     if (btn && btn.classList.contains("sent")) return;
     if (btn) {
       btn.classList.add("sent");
-      btn.querySelector("span:last-child").textContent = "Đã gửi yêu thương rồi nha!";
+      setTimeout(function() {
+        btn.querySelector("span:last-child").textContent = "Đã gửi yêu thương rồi nha!";
+      }, 1000);
     }
 
     // Hiệu ứng hoa bung ra khi ấn Mở món quà
@@ -68,7 +70,7 @@
     setTimeout(function () {
       var overlay = document.getElementById("catOverlay");
       if (overlay) overlay.classList.add("show");
-    }, 600);
+    }, 500);
   };
 
   // ── Đóng popup mèo ───────────────────────────────────────────────
