@@ -348,7 +348,7 @@ body {
   }
 }
 .bloom {
-  animation: bloomB 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* giảm 0.5s → 0.3s để hoa nở nhanh hơn */
+  animation: bloomB 0.1s cubic-bezier(0.34, 1.56, 0.64, 1); /* giảm 0.5s → 0.1s để hoa nở nhanh hơn */
 }
 
 /* lắc lư sau mỗi lần tưới */
