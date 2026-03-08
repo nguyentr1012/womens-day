@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc mừng 8/3 🌸</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <canvas id="bgc"></canvas>
+    <!-- Overlay yêu cầu xoay dọc -->
+    <div class="rotate-overlay" id="rotateOverlay">
+      <div class="rotate-box">
+        <div class="rotate-icon">📱</div>
+        <p>Xoay dọc màn hình để chơi nhé! 🌸</p>
+      </div>
+    </div>
+    <div class="cursor" id="cursor"></div>
+    <div class="can-cur" id="canCur">
+      <img
+        src="image/watering-can.svg"
+        style="display: block; pointer-events: none"
+        alt="watering can"
+      />
+    </div>
+
+    <div
+      class="cloud"
+      style="
+        top: 7%;
+        font-size: 30px;
+        animation-duration: 24s;
+        animation-delay: -6s;
+      "
+    >
+      ☁️
+    </div>
+    <div
+      class="cloud"
+      style="
+        top: 14%;
+        font-size: 20px;
+        animation-duration: 32s;
+        animation-delay: -15s;
+      "
+    >
+      ☁️
+    </div>
+    <div
+      class="cloud"
+      style="
+        top: 4%;
+        font-size: 22px;
+        animation-duration: 28s;
+        animation-delay: -9s;
+      "
+    >
+      ☁️
+    </div>
+
+    <!-- GAME -->
+    <div class="screen" id="gs">
+      <div class="gs-inner">
+        <div class="gtitle">
+          <h2>🌱 Vườn hoa 8/3</h2>
+          <p>Tưới để 5 bông hoa nở rộ — mỗi hoa cần tưới 3 lần 💧</p>
+        </div>
+        <div class="pw">
+          <div class="plabel">
+            <span>🌿 Tiến độ nở hoa</span><span id="pTxt">0 / 5 hoa</span>
+          </div>
+          <div class="pb"><div class="pf" id="pFill"></div></div>
+        </div>
+        <div class="go">
+          <div class="wb" id="wBadge">💧 15 lần tưới</div>
+          <div class="garden" id="garden"></div>
+          <p class="hint" id="hint">👆 Click vào chậu để tưới nước!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSITION (không hiện hoa SVG) -->
+    <div id="tr">
+      <div class="ttitle">
+        🌸 Vườn hoa đã nở rồi!<br /><span class="tsub"
+          >Mở thiệp thôi nào... 💌</span
+        >
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="screen off" id="cs">
+      <div class="cw">
+        <!-- Folded greeting card wrapper -->
+        <div class="greeting-card" id="greetingCard">
+          <!-- Cover (mặt ngoài) — postcard image -->
+          <div class="card-cover" id="cardCover">
+            <img src="image/postcard.png" alt="Thiệp 8/3" class="cover-img" />
+            <div class="cover-hint">
+              <span class="hint-icon">💌</span>
+              <span>Nhấn để mở thiệp</span>
+            </div>
+          </div>
+
+          <!-- Inside (mặt trong) — nội dung thiệp -->
+          <div class="card-inside" id="cardInside">
+            <!-- Corner flowers -->
+            <div class="ci-corner tl">🌸</div>
+            <div class="ci-corner tr">🌸</div>
+            <div class="ci-corner bl">🌸</div>
+            <div class="ci-corner br">🌸</div>
+
+            <!-- Date -->
+            <div class="ci-date">8 · 3 · 2026</div>
+
+            <!-- Title block -->
+            <div class="ci-title-block">
+              <span class="ci-title-sm">Gửi tặng Chị Hương</span>
+              <h1 class="ci-title-lg">Chúc mừng<br />Ngày Quốc tế Phụ nữ 8/3</h1>
+            </div>
+
+            <!-- Ornament divider -->
+            <div class="ci-ornament">
+              <div class="ci-orn-line"></div>
+              <span class="ci-orn-glyph">✦</span>
+              <div class="ci-orn-line"></div>
+            </div>
+
+            <!-- Message box -->
+            <div class="ci-message">
+              <p class="ci-msg-text" contenteditable="true">
+                <em>
+                  Chúc chị một ngày 8/3 thật vui và ý nghĩa.<br /><br />
+                  Hy vọng hôm nay sẽ mang đến cho chị<br />
+                  thêm một chút niềm vui nhỏ<br />
+                  giữa những ngày bận rộn đầu năm.<br /><br />
+                  Chúc chị luôn nhiều năng lượng<br />
+                  và gặp thật nhiều điều tốt đẹp.
+                </em>
+              </p>
+            </div>
+
+            <!-- Signature -->
+  
+            <!-- Send button -->
+            <div class="ci-brow">
+              <button class="ci-send-btn" onclick="sendHeart()">
+                <span class="ci-heart">💝</span><span>Mở món quà nhỏ</span>
+              </button>
+            </div>
+          </div>
+          <!-- /card-inside -->
+        </div>
+        <!-- /greeting-card -->
+      </div>
+    </div>
+
+    <button class="mbtn" id="mBtn" onclick="toggleMusic()" title="Nhạc nền">
+      🎵
+    </button>
+
+    <!-- Cat popup (hiện sau khi bấm Mở món quà) -->
+    <div class="cat-overlay" id="catOverlay" onclick="closeCat(event)">
+      <div class="cat-popup" id="catPopup" onclick="event.stopPropagation()">
+        <button class="cat-close" type="button" onclick="closeCat()" aria-label="Đóng">✕</button>
+        <img src="image/meow.jpg" alt="Mèo tặng hoa chúc mừng 8/3" />
+        <div class="cat-caption">Chúc chị ngày 8/3 thật vui<br>P.S. Khi nào chị rảnh, mình đi uống nước nói chuyện chút nha.</div>
+      </div>
+    </div>
+
+    <script src="js/particles.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/card.js"></script>
+    <script>
+      // Khóa màn hình chiều dọc (portrait) — thử khi load và khi user tương tác
+      (function () {
+        function tryLockPortrait() {
+          if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock("portrait").catch(function () {});
+          }
+        }
+        document.addEventListener("DOMContentLoaded", tryLockPortrait);
+        document.addEventListener("click", tryLockPortrait, { once: true });
+        document.addEventListener("touchstart", tryLockPortrait, { once: true });
+      })();
+    </script>
+  </body>
+</html>
